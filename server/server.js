@@ -6,8 +6,6 @@ import { clerkWebhooks } from './controllers/webhooks.js';
 
 const app = express();
 
-// Async startup function
-async function startServer() {
   // Connect to DB
   await connectDb();
 
@@ -20,7 +18,5 @@ async function startServer() {
   app.post('/clerk' , express.json() ,  clerkWebhooks)
 
   const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}
+  app.listen(PORT, () =>{ console.log(`Server running on port ${PORT}`)});
 
-startServer().catch(err => console.error('Server startup error:', err));
