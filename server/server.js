@@ -11,11 +11,13 @@ const app = express();
 
   // Middleware
   app.use(cors());
+  app.use("/clerk", express.raw({ type: "application/json" }));
   app.use(express.json());
 
   // Routes
   app.get('/', (req, res) => res.send("API Working"));
-  app.post('/clerk' , express.json() ,  clerkWebhooks)
+  app.post('/clerk', clerkWebhooks); // ✅
+  // app.post('/clerk' , express.json() ,  clerkWebhooks)
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () =>{ console.log(`Server running on port ${PORT}`)});
