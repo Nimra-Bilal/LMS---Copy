@@ -67,12 +67,17 @@ export const clerkWebhooks = async (req, res) => {
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
     
     // 👇 raw buffer payload (DO NOT parse it yourself)
+
+
     const payload = req.body;
     const headers = {
       "svix-id": req.headers["svix-id"],
       "svix-timestamp": req.headers["svix-timestamp"],
       "svix-signature": req.headers["svix-signature"],
     };
+    
+console.log("Raw Body (Buffer):", payload.toString());
+console.log("Headers:", headers);
 
     const evt = whook.verify(payload, headers);
     const { data, type } = evt;
