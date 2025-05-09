@@ -9,12 +9,12 @@ const userSchema = new mongoose.Schema(
     enrolledCourses: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Course", // Reference to the 'Course' model
+        ref: 'Course', 
       },
     ],
   },
   { timestamps: true } // Adds createdAt and updatedAt fields
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 export default User;
