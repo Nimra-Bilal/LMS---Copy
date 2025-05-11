@@ -4,9 +4,14 @@ import { dummyCourses } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import humanizeDuration from 'humanize-duration';
 import {useAuth , useUser} from '@clerk/clerk-react';
+import axios from 'axios';
+import { toast } from "react-toastify";
+
+
 export const AppContextProvider = ( props ) => {
 
-  const currency = import.meta.env.VITE_CURRENCY
+const backendUrl = import.meta.env.VITE_BACKEND_URL
+const currency = import.meta.env.VITE_CURRENCY
 const navigate = useNavigate()
 const {getToken} = useAuth();
 const {user} = useUser();
@@ -16,8 +21,21 @@ const [enrolledCourses,setEnrolledCourses] = useState([]);
 
 //fetch all courses
 const fetchAllCourses = async()=>{
-  setAllCourses(dummyCourses)
 
+  setAllCourses(dummyCourses)
+//  try {
+//  const {data} =  await axios.get(backendUrl + '/api/course/all')
+
+// if (data.success) {
+//   setAllCourses(data.courses)
+// }
+// else{
+//   toast.error(data.message)
+// }
+
+//  } catch (error) {
+//    toast.error(error.message)
+//  }
 }
 useEffect(()=>{
   fetchAllCourses()
