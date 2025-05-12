@@ -1,8 +1,8 @@
 import 'dotenv/config.js'; 
-import express, { application } from 'express';
+import express from 'express';
 import cors from 'cors';
 import connectDb from './configs/Mongodb.js';
-import { clerkWebhooks, stripeWebhooks } from './controllers/webhooks.js';
+import { clerkWebhooks, stripeWebhooks } from './controllers/Webhooks.js';
 import educatorRouter from './routes/educatorRoutes.js';
 import { clerkMiddleware } from '@clerk/express';
 import connectCloudinary from './configs/cloudinary.js';
@@ -26,7 +26,7 @@ const app = express();
   app.use('/api/educator' , clerkMiddleware() ,  educatorRouter)
   app.use('/api/course',express.json(), courseRouter)
   app.use('/api/user',express.json(), userRouter)
-  app.post('/stripe',express.raw({type:'application/JSON'}) ,stripeWebhooks )
+  app.post('/stripe',express.raw({type:'application/json'}) ,stripeWebhooks )
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () =>{ console.log(`Server running on port ${PORT}`)});
