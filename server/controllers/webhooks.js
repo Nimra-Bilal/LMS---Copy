@@ -7,7 +7,7 @@ import { Purchase } from "../models/Purchase.js";
 //api contoller funct to manage clerk user with db
 export const clerkWebhooks = async (req, res) => {  
     try {  
-        await connectDb();
+       
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);  
 
         await whook.verify(JSON.stringify(req.body), {  
