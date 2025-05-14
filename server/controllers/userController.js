@@ -19,7 +19,7 @@ export const getUserData = async (req,res) =>{
 export const userEnrolledCourses = async (req,res) =>{
 try {
     const userId = req.auth.userId
-    const userData = await User.findById(userId).populate('enrolled courses')
+    const userData = await User.findById(userId).populate('enrolledcourses')
     res.json({success:true , enrolledCourses:userData.enrolledCourses })
 } catch (error) {
     res.json({success:false ,message:error.message})
