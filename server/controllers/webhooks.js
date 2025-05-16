@@ -77,7 +77,7 @@ switch (event.type) {
         const session = await stripeInstance.checkout.sessions.list({
             payment_intent:paymentIntentId,
         })
-
+const {purchaseId} = session.data[0].metadata;
         const purchaseData = await Purchase.findById(purchaseId);
         const userData = await User.findById(purchaseData.userId);
         const courseData = await Course.findById(purchaseData.courseId.toString());
@@ -100,7 +100,7 @@ switch (event.type) {
             payment_intent: paymentIntentId
         });
         
-        const { purchaseljl } = session.data[0].metadata;
+        const { purchaseId } = session.data[0].metadata;
         const purchaseData = await Purchase.findById(purchaseId);
         purchaseData.status='failed'
         purchaseData.save()
