@@ -13,7 +13,7 @@ const CourseCard = ({course}) => {
             <h3 className='text-base font-semibold'>
                 {course.courseTitle}
             </h3>
-            <p className='text-gray-500'>Nimra</p>
+            <p className='text-gray-500'>{course.educator.name}</p>
             <div className='flex items-center space-x-2'>
                 <p>{calcAvgRating(course)}</p>
                 <div className='flex'>

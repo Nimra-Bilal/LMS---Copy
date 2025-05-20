@@ -1,26 +1,50 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 import {Line} from 'rc-progress'
 import Footer from '../../components/student/Footer'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const MyEnrollments = () => {
-  const {enrolledCourses , calcCourseDuration , navigate} = useContext(AppContext)
-  const [progressArray , setProgressArray] = useState([
-    {lectureCompleted : 2 , totalLectures:40 },
-    {lectureCompleted : 1 , totalLectures:1 },
-    {lectureCompleted : 4 , totalLectures:64 },
-    {lectureCompleted : 3 , totalLectures:3 },
-    {lectureCompleted : 5 , totalLectures:14 },
-    {lectureCompleted : 6 , totalLectures:34 },
-    {lectureCompleted : 7 , totalLectures:94 },
-    {lectureCompleted : 9 , totalLectures:84 },
-    {lectureCompleted : 8 , totalLectures:74 },
-    {lectureCompleted : 10 , totalLectures:64 },
-    {lectureCompleted : 12, totalLectures:54 },
-    {lectureCompleted : 11 , totalLectures:44 },
-    {lectureCompleted : 13, totalLectures:34 },
-    {lectureCompleted : 14, totalLectures:24 },
-  ])
+  const {enrolledCourses , calcCourseDuration , navigate ,
+    userData , backendUrl, 
+    fetchUserEnrolledCourses,getToken,calcNoOfLect} = useContext(AppContext)
+
+  const [progressArray , setProgressArray] = useState([])
+
+  const getCourseProgress = async ()=>{
+try {
+  const token = await getToken();
+  const tempProgressArray = await Promise.all(enrolledCourses.map(async(course)=>{
+    const {data} = await axios.post(`${backendUrl}/api/user/get-course-progress`,
+      {courseId: course._id},{headers: {Authorization: `Bearer ${token}`}})
+let totalLectures = calcNoOfLect(course);
+const lectureCompleted = data.progressData ? data.progressData.lectureCompleted.length : 0;
+return {totalLectures,lectureCompleted}
+  }))
+
+setProgressArray(tempProgressArray);
+
+
+} catch (error) {
+  toast.error(error.message);
+}
+   }
+
+
+   useEffect(()=>{
+if(userData){
+  fetchUserEnrolledCourses()
+
+}
+   },[userData])
+
+     useEffect(()=>{
+if(enrolledCourses.length>0){
+  getCourseProgress()
+  
+}
+   },[enrolledCourses])
   
   return (
     <>
