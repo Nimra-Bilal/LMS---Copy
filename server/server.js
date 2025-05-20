@@ -14,7 +14,13 @@ const app = express();
   // Connect to DB
   await connectDb();
   await connectCloudinary(); 
-  app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173', // your local frontend (Vite)
+    'https://lms-frontend-nimra-bilals-projects.vercel.app' // deployed frontend
+  ],
+  credentials: true
+}));
   app.use(clerkMiddleware());
   app.post('/stripe',express.raw({type:'application/json'}) ,stripeWebhooks )
 
