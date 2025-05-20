@@ -16,11 +16,13 @@ const app = express();
   await connectCloudinary(); 
 app.use(cors({
   origin: [
-    'http://localhost:5173', // your local frontend (Vite)
-    'https://lms-frontend-nimra-bilals-projects.vercel.app' // deployed frontend
+    'http://localhost:5173',
+    'https://lms-frontend-nimra-bilals-projects.vercel.app',
+    'https://lms-frontend-jade-eight.vercel.app'  // ← this is the one throwing the error
   ],
   credentials: true
 }));
+
   app.use(clerkMiddleware());
   app.post('/stripe',express.raw({type:'application/json'}) ,stripeWebhooks )
 
