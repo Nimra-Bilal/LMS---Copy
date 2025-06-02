@@ -32,9 +32,9 @@ if(!imageFile){
 
 const parsedCourseData = await JSON.parse(courseData)
 parsedCourseData.educator=educatorId
-const newCourse= await Course.create(parsedCourseData)
 const imageUpload = await cloudinary.uploader.upload(imageFile.path)
 newCourse.courseThumbnail=imageUpload.secure_url
+const newCourse= await Course.create(parsedCourseData)
 await newCourse.save()
 res.json({success:true , message:'course added' })
     } catch (error) {
