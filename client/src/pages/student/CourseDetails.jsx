@@ -81,7 +81,7 @@ setOpenSections((prev)=>(
 
   return courseData ?  (
     <>
-    <div className='flex bg-gradient-to-b from-cyan-100/70 md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left'>
+    <div className='flex bg-gradient-to-br from-white via-blue-100 to-blue-500 md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left'>
         <div className='absolute h-[500px] top-0 left-0 w-full -z-1 '>
 </div>  
       {/* left col */}

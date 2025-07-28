@@ -35,11 +35,11 @@ useEffect(()=>{
 },[isEducator])
 
   return dashboardData ? (
-    <div className='min-h-screen flex flex-col items-start justify-between gap-8 md:p-8 md:pb-0 p-4 pt-8 pb-0   '>
+    <div className='bg-gradient-to-br from-white via-blue-50 to-blue-500 min-h-screen flex flex-col items-start justify-between gap-8 md:p-8 md:pb-0 p-4 pt-8 pb-0   '>
 <div className='space-y-5'>
 <div className='flex flex-wrap items-center gap-5'>
 
-<div className="flex items-center  gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md">
+<div className="flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-blue-100">
 
     <img src={assets.patients_icon} alt="patients_icon" />
     <div>
@@ -51,7 +51,7 @@ useEffect(()=>{
 
 
 
-  <div className="flex items-center  gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md">
+  <div className="flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-blue-100">
 
     <img src={assets.appointments_icon} alt="patients_icon" />
     <div>
@@ -63,11 +63,11 @@ useEffect(()=>{
 
 
 
-  <div className="flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md">
+  <div className="flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md  overflow-scroll transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-blue-100">
 
     <img src={assets.earning_icon} alt="patients_icon" />
     <div>
-    <p className="text-2xl font-medium text-gray-600">
+    <p className="text-2xl font-medium break-words truncate text-gray-600">
       {currency} {dashboardData.totalEarnings}</p>
   <p className="text-base text-gray-500">Total Earnings</p> 
   </div>
