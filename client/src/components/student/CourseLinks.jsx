@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaPython } from 'react-icons/fa'
-
+import { useNavigate } from 'react-router-dom'
 const courses = [
   {
     name: "HTML",
@@ -25,6 +25,13 @@ const courses = [
 ]
 
 const CourseLinks = () => {
+
+const navigate = useNavigate(); // hook to navigate
+
+  const handlePdfClick = () => {
+    navigate('/pdfs');
+  };
+
   return (
     <section className="py-16 px-6 bg-gradient-to-b from-white to-blue-200 text-center">
       <h2 className="text-3xl font-bold text-gray-800 mb-10">Download Course PDFs</h2>
@@ -42,6 +49,15 @@ const CourseLinks = () => {
             <span className="text-gray-700 font-semibold">{course.name} Course</span>
           </a>
         ))}
+     
+
+      </div>  <div className="mt-10 flex justify-center">
+        <button
+          onClick={handlePdfClick}
+          className="px-10 py-3 rounded-md text-white bg-red-400 transition-all duration-300 transform hover:bg-purple-700 hover:scale-105 hover:shadow-xl hover:rotate-3"
+        >
+          Start studying!
+        </button>
       </div>
     </section>
   )

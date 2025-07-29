@@ -153,7 +153,9 @@ const quizData = [
 const Quiz = () => {
   return (
     <div className="px-8 py-12 bg-gradient-to-b from-blue-200/40 min-h-screen">
-      <h1 className="text-3xl font-semibold text-gray-800 mb-8">Choose a Quiz</h1>
+      <div className="justify-center items-center flex">
+        <h1 className="text-3xl  font-semibold text-gray-800 mb-8">Choose a Quiz</h1>
+</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {quizData.map((quiz, index) => (
           <a
