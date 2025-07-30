@@ -15,6 +15,9 @@ import StudentsEnrolled from './pages/educator/StudentsEnrolled'
 import Navbar from './components/student/Navbar'
 import Quiz from './pages/student/Quiz'
 import PDFSection from './pages/student/PdfSection'
+import About from './pages/student/About'
+import Contact from './pages/student/Contact'
+import Privacy from './pages/student/Priviacy'
 import "quill/dist/quill.snow.css";
 import {ToastContainer } from 'react-toastify';
 const App = () => {
@@ -37,7 +40,9 @@ const isEducatorRoute = useMatch('/educator/*')
 
  <Route path='/quiz' element={<Quiz />} />
  <Route path="/pdfs" element={<PDFSection />} />
-
+<Route path='/about' element={<About />} />
+<Route path='/contact' element={<Contact />} />
+<Route path='/privacy' element={<Privacy />} />
 
         {/* Nested Educator Routes */}
         <Route path='/educator' element={<Educator />}>
